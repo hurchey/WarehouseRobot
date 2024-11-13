@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robot Location</title>
+    <script>
+        async function fetchLocation() {
+            const response = await fetch('/location');
+            const data = await response.json();
+            document.getElementById('location').innerText = 
+                `X: ${data.x.toFixed(2)}, Y: ${data.y.toFixed(2)}, Z: ${data.z.toFixed(2)}`;
+        }
+        setInterval(fetchLocation, 1000); // Refresh every second
+    </script>
+</head>
+<body>
+    <h1>Robot Location</h1>
+    <p id="location">Fetching...</p>
+</body>
+</html>
